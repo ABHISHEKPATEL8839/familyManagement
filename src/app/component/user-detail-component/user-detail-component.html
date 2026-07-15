@@ -1,0 +1,269 @@
+<div class="back">
+
+    <nav class="navbar navbar-expand-lg modern-navbar {{ theme }}">
+        <div class="container-fluid">
+
+            <a class="navbar-brand d-flex align-items-center flex-grow-1 me-2" href="/">
+                <img src="https://betaphysics.iiti.ac.in/iit-phy-logo.png" class="logo-img" alt="IIT Indore Physics">
+
+                <div class="logo-text ms-2">
+                    <h6 class="mb-0 fw-bold">Department of Physics</h6>
+                    <small class="yellow">
+                        Indian Institute of Technology Indore
+                    </small>
+                </div>
+            </a>
+
+            <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+                aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+                <ul class="navbar-nav align-items-lg-center">
+
+                    @for (item of menuItems; track item.label) {
+                    <li class="nav-item">
+                        <a class="nav-link" [href]="item.link">
+                            {{ item.label }}
+                        </a>
+                    </li>
+                    }
+
+                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                        <button class="btn theme-btn" (click)="toggleTheme()">
+                            {{ theme === 'light' ? '🌙 Night' : '☀️ Day' }}
+                        </button>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+
+    @let u = user();
+    <div class="blue">
+
+        <div class="container bg-gradient mt-4 ">
+            <div class="row details bg-gradient">
+                <div class="col-md-4 ">
+                    <img src="https://betaphysics.iiti.ac.in/api/images/1773752508594-4264189.jpg"
+                        class="card-img-top profile-img" alt="Profile">
+                </div>
+
+                <div class="col-md-7 mt-5 bg-gradient details">
+                    @if (u) {
+                    <span style="color: #C3A84C;">
+                        Professor
+                    </span>
+                    <br>
+
+                    <h5 class="card-title">
+                        <span class="light">
+
+                            <h1>Prof.&nbsp; {{ u.name }}</h1>
+                        </span>
+                    </h5>
+                    <div class="user-details container mt-4">
+                        <div class="row ">
+
+                            <div class="col-lg-3 col-md-6 mb-3">
+                                <div class="info-card">
+                                    <h6>Email</h6>
+                                    <p>{{u.email}}</p>
+
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2 col-md-6 mb-3">
+                                <div class="info-card">
+                                    <h6>Category</h6>
+                                    <p>{{u.category}}</p>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2 col-md-6 mb-3">
+                                <div class="info-card">
+                                    <h6>Website</h6>
+                                    <a class="text-decoration-none" [href]="u.website">visit link</a>
+                                    <!-- <p>{{u.website}}</p> -->
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2 col-md-3 mb-3">
+                                <div class="info-card">
+                                    <h6>Phone</h6>
+                                    <p>{{u.phone}}</p>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-3 mb-3">
+                                <div class="info-card">
+                                    <h6>Official Address</h6>
+                                    <p>{{u.address}}</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <span class="interest area info-card mt-5 ">
+                        <h6> Areas of Interest</h6><br>
+                    </span>
+                    <div class="text-start text-light  mb-4">
+                        <button class="btn info mb-3">
+                            Experimental High Energy Physics
+                        </button>
+                        <button class="btn info ms-lg-4 mb-3"> Higgs Physics</button>
+
+                    </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr class="text-dark  m-5 mb-5">
+    <div class="container ">
+
+        <span class="text lorem mb-5 mb-3">
+
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nulla saepe maxime repellendus? Accusamus
+            fugiat
+            placeat perferendis qui
+            veniam ipsum minus distinctio sint! Alias sunt eveniet maxime fuga non consequuntur voluptates?Lorem
+            ipsum dolor
+            sit, amet consectetur adipisicing elit. Quisquam fuga voluptate provident voluptas perferendis
+            praesentium,
+            consectetur architecto, deleniti ipsum voluptatibus quis quibusdam blanditiis aspernatur voluptatem
+            similique
+            cupiditate vel magni beatae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse beatae
+            natus,
+            repellat tempora eaque voluptatem accusantium sapiente suscipit pariatur sed enim inventore quidem
+            soluta
+            eligendi? Porro laboriosam fuga aliquid Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Illum, fugit!
+            At id doloribus dolor sequi, atque delectus deserunt quidem ipsa commodi voluptas nemo reiciendis
+            cum nam fugit
+            fuga est harum.
+            <br>
+            <br>
+
+        </span>
+    </div>
+</div>
+
+
+<div>
+
+    <footer class="bg-blue text-light pt-5 pb-3 ">
+        <div class="container">
+            <div class="row gy-4">
+
+                <!-- Logo & Address -->
+                <div class="col-lg-4 col-md-6">
+                    <a href="/" class="d-flex align-items-center text-decoration-none mb-3">
+                        <img src="https://betaphysics.iiti.ac.in/iit-phy-logo.png" alt="IIT Indore Physics" width="60"
+                            class="me-3">
+
+                        <div>
+                            <h5 class="fw-bold text-white mb-0">Department of Physics</h5>
+                            <small class="text-warning">
+                                Indian Institute of Technology Indore
+                            </small>
+                        </div>
+                    </a>
+
+                    <p class="small mb-0">
+                        PoD 1D 602, Department of Physics<br>
+                        Indian Institute of Technology Indore<br>
+                        Khandwa Road, Simrol, Indore<br>
+                        Madhya Pradesh - 452020, India
+                    </p>
+                </div>
+
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="mb-3">Academics</h5>
+
+                    <ul class="list-unstyled">
+                        <li><a routerLink="" class="text-light text-decoration-none">Ph.D. in Physics</a></li>
+                        <li><a routerLink="" class="text-light text-decoration-none">M.Sc. in Physics</a></li>
+                        <li><a routerLink="" class="text-light text-decoration-none">B.Tech Engineering Physics</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="mb-3">Quick Links</h5>
+
+                    <ul class="list-unstyled">
+                        <li><a routerLink="" class="text-light text-decoration-none">Faculty Directory</a></li>
+                        <li><a routerLink="" class="text-light text-decoration-none">Research Labs</a></li>
+                        <li><a routerLink="" class="text-light text-decoration-none">Seminar Archive</a></li>
+                        <li><a routerLink="" class="text-light text-decoration-none">Student Portal</a></li>
+                        <li><a routerLink="" class="text-light text-decoration-none">Publications</a></li>
+                        <li><a routerLink="" class="text-light text-decoration-none">Login</a></li>
+                        <li><a routerLink="" class="text-light text-decoration-none">Institute Link</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="mb-3">Contact</h5>
+
+                    <p class="mb-2">
+                        <i class="bi bi-envelope-fill me-2"></i>
+                        phy_office@iiti.ac.in
+                    </p>
+
+                    <p>
+                        <i class="bi bi-telephone-fill me-2"></i>
+                        +91 731-660-3417
+                    </p>
+                </div>
+
+            </div>
+
+            <hr class="border-secondary my-4">
+
+            <div class="row align-items-center">
+
+                <div class="col-md-6 text-center text-md-start">
+                    © 2026 Department of Physics, IIT Indore
+                </div>
+
+                <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
+
+                    <a href="#" class="text-light me-3">
+                        <i class="bi bi-linkedin fs-5"></i>
+                    </a>
+
+                    <a href="#" class="text-light me-3">
+                        <i class="bi bi-instagram fs-5"></i>
+                    </a>
+
+                    <a href="#" class="text-light me-3">
+                        <i class="bi bi-facebook fs-5"></i>
+                    </a>
+
+                    <a href="#" class="text-light me-3">
+                        <i class="bi bi-youtube fs-5"></i>
+                    </a>
+
+                    <a href="#" class="text-light">
+                        <i class="bi bi-twitter-x fs-5"></i>
+                    </a>
+
+                </div>
+
+            </div>
+        </div>
+    </footer>
+    <div class=" align-items-center bg-light">
+
+        <div class=" text-center text-md-center">
+            <span class="text-dark">Powered by Arc CMS from Quadralyst</span>
+        </div>
+    </div>
+</div>

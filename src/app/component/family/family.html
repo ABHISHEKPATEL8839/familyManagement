@@ -1,0 +1,64 @@
+<div class="container">
+  <div>
+    <div class="card p-2 mt-3 shadow-sm">
+
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <h4 class="mb-0">Family Members</h4>
+
+        <!-- <button class="btn btn-primary btn-sm" (click)="add.emit()">
+      + Add Member
+    </button> -->
+      </div>
+
+      <div class="table-responsive justify-content-between">
+
+        <table class="table table-bordered table-striped align-middle justify-content-between">
+
+          <thead class="table-dark">
+            <tr *ngIf="members.length > 0">
+              <th>#</th>
+              <th>Name</th>
+              <th>Age</th>
+              <th>Relation</th>
+              <th>Actions</th>
+
+            </tr>
+          </thead>
+
+          <tbody>
+
+            <tr *ngFor="let m of members; let i = index">
+
+              <td>{{ i + 1 }}</td>
+              <td>{{ m.name }}</td>
+              <td>{{ m.age }}</td>
+              <td>{{ m.relation }}</td>
+
+              <td>
+                <button class="btn btn-sm p-3 " data-bs-toggle="modal" data-bs-target="#Addmember" (click)="edit.emit(m)">
+                  <i class="fa fa-pencil text-info fa-2x mx-lg-3" aria-hidden="true"></i>
+                </button>
+
+
+                <button class="btn btn-sm P-3" (click)="delete.emit(m.id)">
+                  <i class="fa fa-trash text-danger fa-2x mx-lg-3" aria-hidden="true"></i>
+                </button>
+
+              </td>
+
+            </tr>
+
+            <tr *ngIf="members.length === 0">
+              <td colspan="6" class="text-center text-muted">
+                No members found
+              </td>
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+    </div>
+  </div>
+</div>

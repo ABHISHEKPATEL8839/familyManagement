@@ -1,0 +1,457 @@
+.full-screen {
+  width: 100%;
+  min-height: 100dvh;
+}
+
+body {
+  background-color: #D2E6FA;
+
+}
+
+.back {
+  background-color: #D2E6FA;
+}
+
+.modern-navbar {
+  padding: 0.6rem 1rem;
+  transition: all 0.3s ease;
+}
+
+.logo {
+  text-decoration: none;
+}
+
+.logo-img {
+  height: 45px;
+  width: auto;
+  object-fit: contain;
+}
+
+.logo-text h6 {
+  font-size: 0.95rem;
+  color: #111;
+}
+
+.logo-text small {
+  font-size: 0.75rem;
+  color: #aba172;
+}
+
+.navbar-nav .nav-link {
+  font-weight: 500;
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+
+.navbar-nav .nav-link:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.theme-btn {
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-weight: 500;
+}
+
+.light {
+  background: #ffffff;
+}
+
+.dark {
+  background: #1b1a1a;
+}
+
+.dark .nav-link,
+.dark .logo-text h6,
+.dark .logo-text small {
+  color: #f1f1f1 !important;
+}
+
+.dark .navbar-nav .nav-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-toggler-icon {
+  filter: invert(0.5);
+}
+
+.dark .navbar-toggler-icon {
+  filter: invert(1);
+}
+
+.directory-header {
+  background: linear-gradient(135deg, #0E1320, #0E1320);
+  padding: 40px 0;
+  border-radius: 16px;
+}
+
+.directory-title h5 {
+  color: #aba172;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.directory-title h1 {
+  font-weight: 800;
+  margin: 0;
+  color: #d9e3ee;
+}
+
+.search-box {
+  position: relative;
+}
+
+.search-box input {
+  height: 52px;
+  border-radius: 50px;
+  padding-left: 20px;
+  padding-right: 120px;
+  border: 1px solid #0F1521;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.search-box button {
+  position: absolute;
+  right: 6px;
+  top: 6px;
+  height: 40px;
+  border-radius: 50px;
+  padding: 0 20px;
+  font-weight: 600;
+  background: #3b6ab0;
+  border: none;
+  transition: 0.3s;
+}
+
+.search-box button:hover {
+  background: #0b5ed7;
+}
+
+.modern-card {
+  transition: all 0.3s ease;
+  background: #ffffff;
+}
+
+.modern-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.card-title {
+  color: #2c3e50;
+}
+
+.card-body p {
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.btn-primary {
+  border-radius: 30px;
+  font-weight: 500;
+}
+
+.cat {
+  width: 100%;
+}
+
+
+footer a:hover {
+  color: #ffc107 !important;
+}
+
+
+
+.modern-card {
+  border: none;
+  border-radius: 18px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  background: #111827;
+}
+
+.modern-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, .15) !important;
+}
+
+.profile-img {
+  width: 100%;
+  height: 100%px;
+  background-color: #D2E6FB;
+}
+
+.card-body {
+  background-color: #0b5ed7;
+}
+
+.card-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 8px;
+}
+
+.category {
+  color: #0d6efd;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.email {
+  font-size: .9rem;
+  color: #6c757d;
+  word-break: break-word;
+}
+
+
+.profile-img {
+  width: 100%;
+  height: 100%;
+}
+
+.card-title {
+  font-size: 1rem;
+}
+
+
+.lorem {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 20px;
+
+}
+
+.img {
+  width: 20px;
+  height: 10px;
+}
+
+
+.user-details {
+  color: #fff;
+}
+
+.info-card:hover {
+  color: #0d6efd;
+}
+
+.info-card h6 {
+  color: #88bdef;
+  font-weight: 600;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+.info-card p {
+  margin: 0;
+  color: #788CA9;
+  font-size: 15px;
+  word-break: break-word;
+}
+
+@media (max-width: 768px) {
+  .info-card {
+    padding: 10px;
+  }
+
+  .info-card h6 {
+    font-size: 13px;
+  }
+
+  .info-card p {
+    font-size: 14px;
+  }
+}
+
+.info {
+  border-color: #aba172;
+  border-radius: 250px;
+  color: #788CA9;
+}
+
+.info:hover {
+  color: #aba172;
+}
+
+
+
+.area {
+  color: #6e6c6c
+}
+
+.bg-blue {
+  background-color: #5B9BD5;
+}
+
+.details {
+
+  background-color: #c6ddf4;
+}
+
+.blue {
+  background-color: #D2E6FB;
+}
+
+.text {
+  color: dark;
+}
+
+.profile-img {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  object-fit: cover;
+}
+
+@media (max-width: 767.98px) {
+  .profile-img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 20px;
+  }
+
+  .details {
+    text-align: center;
+  }
+
+  .user-details {
+    text-align: left;
+  }
+}
+
+.modern-navbar {
+  padding: .6rem 1rem;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+}
+
+.logo-img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.logo-text {
+  min-width: 0;
+}
+
+.logo-text h6 {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.logo-text small {
+  display: block;
+  font-size: .8rem;
+  line-height: 1.2;
+}
+
+.navbar-toggler {
+  flex-shrink: 0;
+}
+
+.navbar-nav .nav-link {
+  padding: .5rem .8rem;
+}
+
+
+@media (max-width:575.98px) {
+
+  .logo-img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .logo-text h6 {
+    font-size: .82rem;
+  }
+
+  .logo-text small {
+    font-size: .62rem;
+  }
+
+  .logo-text {
+    overflow: hidden;
+  }
+
+  .logo-text h6,
+  .logo-text small {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .navbar {
+    padding: .5rem;
+  }
+
+  .navbar-toggler {
+    padding: .25rem .45rem;
+  }
+}
+
+
+@media (min-width:576px) and (max-width:767.98px) {
+
+  .logo-img {
+    width: 45px;
+    height: 45px;
+  }
+
+  .logo-text h6 {
+    font-size: .9rem;
+  }
+
+  .logo-text small {
+    font-size: .7rem;
+  }
+}
+
+
+@media (min-width:768px) and (max-width:991.98px) {
+
+  .logo-img {
+    width: 52px;
+    height: 52px;
+  }
+
+  .logo-text h6 {
+    font-size: .95rem;
+  }
+
+  .logo-text small {
+    font-size: .75rem;
+  }
+}
+
+
+@media (min-width:992px) {
+
+  .logo-img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .logo-text h6 {
+    font-size: 1rem;
+  }
+
+  .logo-text small {
+    font-size: .82rem;
+  }
+}

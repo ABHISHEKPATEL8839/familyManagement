@@ -1,0 +1,119 @@
+<div class="signup-wrapper">
+  <div class="signup-card">
+
+    <h2 class="signup-title">Create Account</h2>
+    <form [formGroup]="form" (ngSubmit)="signup()">
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" placeholder="Enter Email" formControlName="email">
+        @if (form.get('email')?.touched) {
+        @if (form.get('email')?.hasError('required')) {
+        <small class="text-danger">
+          Email is required
+        </small>
+        }
+        @if (form.get('email')?.hasError('email')) {
+        <small class="text-danger">
+          Invalid email format
+        </small>
+        }
+        }
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Full Name</label>
+        <input class="form-control" placeholder="Enter Full Name" formControlName="name"
+          (keypress)="allowOnlyAlphabets($event)">
+        @if (form.get('name')?.touched) {
+        @if (form.get('name')?.hasError('required')) {
+        <small class="text-danger">
+          Name is required
+        </small>
+        }
+        @if (form.get('name')?.hasError('minlength')) {
+        <small class="text-danger">
+          Minimum 3 characters required
+        </small>
+        }
+        }
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Password</label>
+        <div class="password-wrapper">
+          <input class="form-control" [type]="showPassword ? 'text' : 'password'" placeholder="Enter Password"
+            formControlName="password">
+          <span class="password-toggle" (click)="togglePassword()">
+            <i class="bi" [class.bi-eye]="!showPassword" [class.bi-eye-slash]="showPassword">
+            </i>
+          </span>
+        </div>
+        @if (form.get('password')?.touched) {
+        @if (form.get('password')?.hasError('required')) {
+        <small class="text-danger">
+          Password is required
+        </small>
+        }
+        @if (form.get('password')?.hasError('minlength')) {
+        <small class="text-danger">
+          Password must be at least 6 characters.
+        </small>
+        }
+        }
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Confirm Password</label>
+        <div class="password-wrapper">
+          <input class="form-control" [type]="showConfirmPassword ? 'text' : 'password'" placeholder="Confirm Password"
+            formControlName="confirmPassword">
+          <span class="password-toggle" (click)="toggleConfirmPassword()">
+            <i class="bi" [class.bi-eye]="!showConfirmPassword" [class.bi-eye-slash]="showConfirmPassword">
+            </i>
+          </span>
+        </div>
+        @if (form.get('confirmPassword')?.touched) {
+        @if (form.get('confirmPassword')?.hasError('required')) {
+        <small class="text-danger">
+          Confirm password is required
+        </small>
+        }
+        }
+        @if (
+        form.hasError('passwordMismatch') &&
+        form.get('confirmPassword')?.touched
+        )
+        {
+        <small class="text-danger">
+          Passwords do not match
+        </small>
+        }
+      </div>
+
+      <button type="submit" class="btn btn-signup w-100 mt-3" [disabled]="form.invalid || isLoading">
+        @if (!isLoading) {
+        Sign Up
+        } @else {
+        <span class="d-flex justify-content-center align-items-center gap-2">
+          <span class="spinner-border spinner-border-sm"></span>
+          Creating...
+        </span>
+        }
+      </button>
+    </form>
+    <div class="login-link mt-3 text-center">
+      Already have an account?
+      <a routerLink="/login">
+        Login
+      </a>
+    </div>
+  </div>
+</div>
+@if (showToastFlag()) {
+<div class="toast show position-fixed bottom-0 end-0 m-3 text-white" [class.bg-success]="toastType === 'success'"
+  [class.bg-danger]="toastType === 'danger'">
+  <div class="toast-body">
+    {{ toastMessage }}
+  </div>
+</div>
+}

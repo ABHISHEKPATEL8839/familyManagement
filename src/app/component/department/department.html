@@ -1,0 +1,217 @@
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+
+      <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-body p-4">
+
+          <h3 class="text-center mb-4 fw-bold text-dark">
+            Registration Form
+          </h3>
+
+          <form [formGroup]="registerForm" (ngSubmit)="submit()" novalidate>
+
+            <div class="mb-3">
+              <label class="form-label">Full Name <span class="red">*</span> </label>
+              <input type="text" placeholder="ENTER YOUR NAME" class="form-control"
+                [class.is-invalid]="registerForm.get('name')?.invalid && registerForm.get('name')?.touched"
+                formControlName="name">
+
+              <div class="invalid-feedback">
+                @if(registerForm.get('name')?.errors?.['required'] && registerForm.get('name')?.touched) {
+                <div>Name is required</div>
+                }
+                @if(registerForm.get('name')?.errors?.['minlength']) {
+                <div>Minimum 4 characters required</div>
+                }
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Email <span class="red">*</span></label>
+              <input type="email" class="form-control  " placeholder="ENTER YOUR EMAIL"
+                [class.is-invalid]="registerForm.get('email')?.invalid && registerForm.get('email')?.touched"
+                formControlName="email">
+              <div class="invalid-feedback">
+                @if(registerForm.get('email')?.errors?.['pattern']) {
+                <div>Invalid email format</div>
+                }
+                @if(registerForm.get('email')?.errors?.['required']) {
+                <div>Email is required</div>
+                }
+                @if(registerForm.get('email')?.errors?.['email']) {
+                <div>Invalid email format</div>
+                }
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Category<span class="red">*</span></label>
+
+              <select class="form-select modern-select w-100"
+                [class.is-invalid]="registerForm.get('category')?.invalid && registerForm.get('category')?.touched"
+                formControlName="category">
+                <option value="">Select Categories</option>
+
+                @for (category of categories; track category) {
+                <option [value]="category">
+                  {{ category }}
+                </option>
+                }
+              </select>
+
+              <div class="invalid-feedback">
+                @if(registerForm.get('category')?.errors?.['required']) {
+                <div>Category is required</div>
+                }
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Phone<span class="red">*</span></label>
+
+              <input type="text" maxlength="10" class="form-control" placeholder="ENTER YOUR PHONE NUMBER"
+                (keypress)="allowOnlyNumbers($event)"
+                [class.is-invalid]="registerForm.get('phone')?.invalid && registerForm.get('phone')?.touched"
+                formControlName="phone">
+
+              <div class="invalid-feedback">
+                @if(registerForm.get('phone')?.errors?.['required']) {
+                <div>Phone is required</div>
+                }
+                @if(registerForm.get('phone')?.errors?.['pattern']) {
+                <div>Enter valid 10-digit number</div>
+                }
+              </div>
+            </div>
+
+
+            <div class="mb-3">
+              <label class="form-label">
+                Website <span class="red">*</span>
+              </label>
+
+              <input type="url" class="form-control" name="link" placeholder="ENTER YOUR WEBSITE URL"
+                formControlName="website"
+                [class.is-invalid]="registerForm.get('website')?.invalid && registerForm.get('website')?.touched">
+
+              <div class="invalid-feedback">
+                @if(registerForm.get('website')?.errors?.['required']) {
+                <div>Website URL is required.</div>
+                }
+
+                @if(registerForm.get('website')?.errors?.['pattern']) {
+                <div>Please enter a valid website URL.</div>
+                }
+              </div>
+            </div>
+
+
+            <label class="form-label">Password <span class="red">*</span></label>
+            <div class="mb-3">
+              <div class="input-group password-group">
+                <input [type]="showPassword ? 'text' : 'password'" class="form-control"
+                  placeholder="ENTER YOUR PASSWORD" formControlName="password">
+
+                <span class="password-icon" (click)="togglePassword()">
+                  <i class="bi" [ngClass]="showPassword ? 'bi-eye-slash' : 'bi-eye'"></i>
+                </span>
+              </div>
+
+              @if (registerForm.get('password')?.touched) {
+              <div class="invalid-feedback d-block">
+
+                @if (registerForm.get('password')?.touched) {
+                <div class="invalid-feedback d-block">
+
+                  @if (registerForm.get('password')?.errors?.['required']) {
+                  <div>Password is required.</div>
+
+                  } @else if (registerForm.get('password')?.errors?.['minlength']) {
+                  <div>Password must be at least 8 characters long.</div>
+
+                  } @else if (registerForm.get('password')?.errors?.['pattern']) {
+                  <div>
+                    Password must include at least one uppercase letter, one lowercase letter,
+                    one number, and one special character.
+                  </div>
+                  }
+
+                </div>
+                }
+
+              </div>
+              }
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Address <span class="red">*</span></label>
+              <textarea class="form-control" rows="3"
+                [class.is-invalid]="registerForm.get('address')?.invalid && registerForm.get('address')?.touched"
+                formControlName="address" placeholder="ENTER YOUR Address"></textarea>
+
+              <div class="invalid-feedback">
+                @if(registerForm.get('address')?.errors?.['required']) {
+                <div>Address is required</div>
+                }
+              </div>
+            </div>
+            <div class="container">
+              <div class="row justify-content-center g-3">
+
+                <div class="col-12 col-md-6 col-lg-4 ">
+                  <div class="text-center">
+                    <button class="btn btn-blue w-100 py-2 fw-semibold" (click)="goToDepartments($event)">
+                      All-Department
+                    </button>
+                  </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4 mb-2">
+                  <button class="btn btn-yellow w-100 py-2 fw-semibold" [disabled]="isLoading">
+                    @if(!isLoading) {
+                    <span>Register</span>
+                    }
+
+                    @if(isLoading) {
+                    <span>
+                      <span class="spinner-border spinner-border-sm me-2"></span>
+                      Registering...
+                    </span>
+                    }
+                  </button>
+                </div>
+
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+
+  <div id="successToast" class="toast text-bg-success border-0">
+    <div class="d-flex">
+      <div class="toast-body">
+        Registration successful!
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+    </div>
+  </div>
+
+  <div id="errorToast" class="toast text-bg-danger border-0 mt-2">
+    <div class="d-flex">
+      <div class="toast-body">
+        User already exists!
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,166 @@
+<div class="container-fluid p-0">
+  <nav class="navbar navbar-dark bg-dark ">
+    <span class="navbar-brand me-auto" style="font-size: small;">
+      <span style="font-size: 1x-large;"> Welcome Family App 👨‍👩‍👧<br /></span>
+      <h5 style="color: #24B1B1;"> {{ userName }} </h5>
+    </span>
+    <h5 class="text-light mx-lg-3 my-2 my-lg-0 text-center">
+    </h5>
+    <div class="d-flex gap-2 flex-wrap justify-content-center">
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Addmember">
+        <i class="fa fa-users" aria-hidden="true"></i> Add Member
+      </button>
+
+
+
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <i class="fa fa-user" aria-hidden="true"></i> Edit
+      </button>
+      <button class="btn btn-primary" routerLink="/department">
+        Department
+      </button>
+      <button class="btn btn-light btn-sm" (click)="confirmLogout()">
+        <i class="fa fa-sign-out"></i> Logout
+      </button>
+    </div>
+
+  </nav>
+  <div class="toast-container position-fixed top-0 end-0 p-3">
+    <div class="toast show text-bg-success border-0" *ngIf="showToast()">
+      <div class="d-flex">
+        <div class="toast-body">
+          {{ toastMessage }}
+        </div>
+        <button class="btn-close btn-close-white me-2 m-auto" (click)="showToast.set(false)">
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="container mt-3">
+    <div class="text-center my-3" *ngIf="isLoadingMembers">
+      <div class="spinner-border text-primary"></div>
+      <div class="text-muted mt-2">Loading members...</div>
+    </div>
+    <div class="alert alert-danger" *ngIf="errorMsg">
+      {{ errorMsg }}
+    </div>
+
+  </div>
+  <div class="modal fade show d-block" *ngIf="showConfirmModal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5>Confirm Alert</h5>
+          <button class="btn-close" (click)="closeConfirm()"></button>
+        </div>
+        <div class="modal-body">
+          <p>{{ confirmMessage }}</p>
+        </div>
+        <div class="modal-footer flex-wrap gap-2">
+          <button class="btn btn-danger w-100 w-md-auto" (click)="confirmYes()">Yes</button>
+          <button class="btn btn-secondary w-100 w-md-auto" (click)="closeConfirm()">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-family-list [members]="members()" , [members]="members()" , (edit)="updateMember($event)" ,
+  (delete)="confirmDelete($event)">
+</app-family-list>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit User</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label  mt-3 mb-1">Name</label>
+            <input [(ngModel)]="userName" placeholder="Name" name="userName" required minlength="3"
+              class="form-control mb-2" #nameRef="ngModel" (keypress)="allowOnlyAlphabets($event)" />
+            <small class="text-danger" *ngIf="nameRef.invalid && nameRef.touched">
+              Name must be 3+ letters
+            </small>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input [(ngModel)]="email" class="form-control" placeholder="email" name="email">
+
+          </div>
+
+        </div>
+      </div>
+      <div class="modal-footer modal-footer-responsive">
+        <button class="btn btn-success flex-btn" type="button" data-bs-dismiss="modal" (click)="save()
+       " (click)="closeModel()">
+          <span btn btn-info>save</span>
+          <span *ngIf="isSaving" class="spinner-border spinner-border-sm"></span>
+        </button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="modal fade" id="Addmember" tabindex="-1" aria-labelledby="AddmemberLabel" aria-hidden="true m-5">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fs-5" id="AddmemberLabel"> {{ isEditMode ? 'Update Member' : 'Add Member' }}</h5>
+        <!-- <button class="btn-close" (click)="closeModal()"></button> -->
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label  mt-3 mb-1">Name</label>
+            <input class="form-control" placeholder="Name" name="name" [(ngModel)]="name" required minlength="3"
+              #nameRef="ngModel" (keypress)="allowOnlyAlphabets($event)" />
+            <small class="text-danger" *ngIf="nameRef.invalid && nameRef.touched">
+              Name must be 3+ letters
+            </small>
+          </div>
+          <div class="form-group">
+            <label class="form-label mt-3 mb-1">Age</label>
+            <input type="number" class="form-control" placeholder="Age" name="age" [(ngModel)]="age" required min="1"
+              max="120" #ageRef="ngModel" />
+            <small class="text-danger" *ngIf="ageRef.invalid && ageRef.touched">
+              Enter valid age
+            </small>
+          </div>
+          <div class="form-group">
+            <label class="form-label mt-3 mb-1">Relation</label>
+            <select class="form-select" name="relation" [(ngModel)]="relation" required #relationRef="ngModel">
+              <option value="" disabled selected>Select relation</option>
+              <option *ngFor="let r of relationOptions" [value]="r">
+                {{ r }}v
+              </option>
+            </select>
+            <small class="text-danger" *ngIf="relationRef.invalid && relationRef.touched">
+              Relation required
+            </small>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer modal-footer-responsive">
+        <button class="btn btn-success flex-btn" type="button" data-bs-dismiss="modal" (click)="addMember()"
+          (click)="closeModel()">
+          <span *ngIf="!isSaving">
+            {{ isEditMode ? 'Update' : 'Save' }}
+          </span>
+          <span *ngIf="isSaving" class="spinner-border spinner-border-sm "></span>
+        </button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+      </div>
+    </div>
+  </div>
+</div>
